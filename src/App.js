@@ -1,22 +1,20 @@
 import React from 'react'
-import {useForm} from "react-hook-form"
-
+import {BrowserRouter as Router, Routes ,Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Form from './pages/Form'
+import Navbar from './components/Navbar'
 const App = () => {
-  const {register,handleSubmit} = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data)
-
-  }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" placeholder="Full Name" {...register("fullname")}/>
-        <input type="text" placeholder="Email" {...register("email")}/>
-        <input type="number" placeholder="Age" {...register("age")}/>
-        <input type="password" placeholder="Password" {...register("password")}/>
-        <input type="password" placeholder="Confirm Password" {...register("password")}/>
-        <input type="submit"/>
-    </form>
+    
+      <Router> 
+        <Navbar/>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/form" element={<Form/>}/>
+        </Routes>
+      </Router>
+
+   
   )
 }
 
